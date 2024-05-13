@@ -1,0 +1,28 @@
+---
+title: "Exploring Trends in Global Temperature"
+output: html_Exploring Trends in Global Temperature
+---
+
+
+```{r}
+#Changes of the global temperature over time
+library(ggplot2)
+library(dplyr)
+data("weather")
+ggplot(weather, aes(x = time_hour, y = temp)) +
+  geom_line() +
+  labs(title = "Changes of Global Temperature Over Time",
+       x = "Time_hour",
+       y = "Temp") +
+  theme_minimal()
+```
+This command is to provide the graphic of the changes of global temperature over time.
+```{r}
+#Mean, Median, SD of global temperature 
+summary_stats <- weather %>%
+  summarize(Mean = mean(temp, na.rm = TRUE),
+            Median = median(temp, na.rm = TRUE),
+            SD = sd(temp, na.rm = TRUE))
+```
+This command is to provide the data of a mean, median and SD of a global temperature.
+
